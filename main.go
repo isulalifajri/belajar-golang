@@ -55,4 +55,46 @@ func main() {
 	fmt.Println("int ke float64 :", y)
 	fmt.Println("float64 ke int :", z)
 	fmt.Println("byte ke string :", str)
+
+	// === Array ===
+	var angka [3]int = [3]int{1, 2, 3}
+	fmt.Println("\n=== Array ===")
+	fmt.Println("Isi array:", angka)
+	fmt.Println("Panjang array:", len(angka))
+
+	// === Slice ===
+	slice := []string{"apel", "jeruk", "mangga"}
+	fmt.Println("\n=== Slice ===")
+	fmt.Println("Isi slice:", slice)
+	slice = append(slice, "pisang")
+	fmt.Println("Setelah ditambah:", slice)
+
+	// === Map ===
+	mahasiswa := map[string]int{
+		"Melati": 20,
+		"Budi": 22,
+	}
+	fmt.Println("\n=== Map ===")
+	fmt.Println("Isi map:", mahasiswa)
+	fmt.Println("Umur Melati:", mahasiswa["Melati"])
+
+	// === If Expression ===
+	fmt.Println("\n=== If Expression ===")
+	if umur > 18 {
+		fmt.Println("Status: Dewasa")
+	} else {
+		fmt.Println("Status: Anak-anak")
+	}
+
+	// === Switch Expression ===
+	fmt.Println("\n=== Switch Expression ===")
+	hari := "Senin"
+	switch hari {
+	case "Senin":
+		fmt.Println("Hari ini Senin, semangat kerja!")
+	case "Sabtu", "Minggu":
+		fmt.Println("Weekend, saatnya libur!")
+	default:
+		fmt.Println("Hari biasa.")
+	}
 }
