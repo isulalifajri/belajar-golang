@@ -72,7 +72,7 @@ func main() {
 	// === Map ===
 	mahasiswa := map[string]int{
 		"Melati": 20,
-		"Budi": 22,
+		"Budi":   22,
 	}
 	fmt.Println("\n=== Map ===")
 	fmt.Println("Isi map:", mahasiswa)
@@ -96,5 +96,19 @@ func main() {
 		fmt.Println("Weekend, saatnya libur!")
 	default:
 		fmt.Println("Hari biasa.")
+	}
+
+	// === Break & Continue ===
+	fmt.Println("\n=== Break & Continue ===")
+	for i := 1; i <= 10; i++ {
+		if i == 3 {
+			fmt.Println("Lewati angka", i, "(continue)")
+			continue // loncat ke iterasi berikutnya
+		}
+		if i == 8 {
+			fmt.Println("Berhenti di angka", i, "(break)")
+			break // hentikan loop sepenuhnya
+		}
+		fmt.Println("Angka:", i)
 	}
 }
