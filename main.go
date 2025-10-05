@@ -9,9 +9,24 @@ const AppName string = "Belajar Golang Dasar"
 type Age int
 type Status bool
 
+// === Function tanpa parameter ===
+func sapa() {
+	fmt.Println("Halo dari function sapa()!")
+}
+
+// === Function dengan parameter ===
+func hitungLuasPersegiPanjang(panjang int, lebar int) {
+	luas := panjang * lebar
+	fmt.Printf("Luas persegi panjang (%d x %d) = %d\n", panjang, lebar, luas)
+}
+
+// === Function dengan return value ===
+func tambah(a int, b int) int {
+	return a + b
+}
+
 func main() {
 	// variable string
-	// var nama string = "Hening"
 	nama := "Hening"
 
 	// variable boolean pakai type declaration
@@ -111,4 +126,18 @@ func main() {
 		}
 		fmt.Println("Angka:", i)
 	}
+
+	// === Function ===
+	fmt.Println("\n=== Function ===")
+
+	// panggil function tanpa parameter
+	sapa()
+
+	// panggil function dengan parameter
+	hitungLuasPersegiPanjang(5, 10)
+	hitungLuasPersegiPanjang(7, 3)
+
+	// panggil function dengan return value
+	hasil := tambah(12, 8)
+	fmt.Println("Hasil penjumlahan (12 + 8) =", hasil)
 }
