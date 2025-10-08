@@ -9,6 +9,20 @@ const AppName string = "Belajar Golang Dasar"
 type Age int
 type Status bool
 
+// === Struct ===
+type Mahasiswa struct {
+	Nama   string
+	Umur   int
+	Prodi  string
+	IPK    float64
+	Active bool
+}
+
+// Method untuk struct Mahasiswa
+func (m Mahasiswa) SapaMahasiswa() {
+	fmt.Printf("Halo, saya %s dari prodi %s dengan IPK %.2f!\n", m.Nama, m.Prodi, m.IPK)
+}
+
 // === Function tanpa parameter ===
 func sapa() {
 	fmt.Println("Halo dari function sapa()!")
@@ -27,7 +41,6 @@ func tambah(a int, b int) int {
 
 // === Function dengan defer, panic, dan recover ===
 func prosesData() {
-	// defer dijalankan terakhir walaupun terjadi panic
 	defer func() {
 		if r := recover(); r != nil {
 			fmt.Println("Terjadi error:", r)
@@ -38,13 +51,11 @@ func prosesData() {
 
 	fmt.Println("Mulai proses data...")
 
-	// contoh panic
 	var pembagi int = 0
 	if pembagi == 0 {
 		panic("Tidak bisa membagi dengan nol!")
 	}
 
-	// baris ini tidak akan dijalankan jika panic terjadi
 	fmt.Println("Hasil:", 10/pembagi)
 }
 
@@ -69,11 +80,10 @@ func main() {
 
 	// === Konversi tipe data ===
 	var x int = 10
-	var y float64 = float64(x)   // int ke float64
-	var z int = int(y)           // float64 ke int
-
+	var y float64 = float64(x)
+	var z int = int(y)
 	var char byte = 'A'
-	var str string = string(char) // byte ke string
+	var str string = string(char)
 
 	// cetak semua
 	fmt.Println("=== Cetak Variable & Constant ===")
@@ -87,7 +97,7 @@ func main() {
 	fmt.Printf("%d - %d = %d\n", a, b, kurang)
 	fmt.Printf("%d * %d = %d\n", a, b, kali)
 	fmt.Printf("%d / %d = %d\n", a, b, bagi)
-	fmt.Printf("%d %% %d = %d\n", a, b, modulo) // %% untuk cetak %
+	fmt.Printf("%d %% %d = %d\n", a, b, modulo)
 
 	fmt.Println("\n=== Konversi Tipe Data ===")
 	fmt.Println("int ke float64 :", y)
@@ -141,28 +151,34 @@ func main() {
 	for i := 1; i <= 10; i++ {
 		if i == 3 {
 			fmt.Println("Lewati angka", i, "(continue)")
-			continue // loncat ke iterasi berikutnya
+			continue
 		}
 		if i == 8 {
 			fmt.Println("Berhenti di angka", i, "(break)")
-			break // hentikan loop sepenuhnya
+			break
 		}
 		fmt.Println("Angka:", i)
 	}
 
 	// === Function ===
 	fmt.Println("\n=== Function ===")
-
-	// panggil function tanpa parameter
 	sapa()
-
-	// panggil function dengan parameter
 	hitungLuasPersegiPanjang(5, 10)
 	hitungLuasPersegiPanjang(7, 3)
-
-	// panggil function dengan return value
 	hasil := tambah(12, 8)
 	fmt.Println("Hasil penjumlahan (12 + 8) =", hasil)
+
+	// === Struct ===
+	fmt.Println("\n=== Struct ===")
+	m1 := Mahasiswa{
+		Nama:   "Bunga Melati",
+		Umur:   20,
+		Prodi:  "Teknik Informatika",
+		IPK:    3.85,
+		Active: true,
+	}
+	fmt.Printf("Data Mahasiswa: %+v\n", m1)
+	m1.SapaMahasiswa()
 
 	// === Defer, Panic, Recover ===
 	fmt.Println("\n=== Defer, Panic, dan Recover ===")
