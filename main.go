@@ -25,6 +25,29 @@ func tambah(a int, b int) int {
 	return a + b
 }
 
+// === Function dengan defer, panic, dan recover ===
+func prosesData() {
+	// defer dijalankan terakhir walaupun terjadi panic
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Terjadi error:", r)
+			fmt.Println("Program tetap lanjut berkat recover()")
+		}
+		fmt.Println("Selesai menjalankan defer di prosesData()")
+	}()
+
+	fmt.Println("Mulai proses data...")
+
+	// contoh panic
+	var pembagi int = 0
+	if pembagi == 0 {
+		panic("Tidak bisa membagi dengan nol!")
+	}
+
+	// baris ini tidak akan dijalankan jika panic terjadi
+	fmt.Println("Hasil:", 10/pembagi)
+}
+
 func main() {
 	// variable string
 	nama := "Hening"
@@ -140,4 +163,10 @@ func main() {
 	// panggil function dengan return value
 	hasil := tambah(12, 8)
 	fmt.Println("Hasil penjumlahan (12 + 8) =", hasil)
+
+	// === Defer, Panic, Recover ===
+	fmt.Println("\n=== Defer, Panic, dan Recover ===")
+	prosesData()
+
+	fmt.Println("Program tetap berjalan setelah recover()")
 }
