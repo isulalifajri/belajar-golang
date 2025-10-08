@@ -5,7 +5,7 @@ import "fmt"
 // constant
 const AppName string = "Belajar Golang Dasar"
 
-// type declaration (membuat alias tipe data baru)
+// type declaration
 type Age int
 type Status bool
 
@@ -18,9 +18,26 @@ type Mahasiswa struct {
 	Active bool
 }
 
-// Method untuk struct Mahasiswa
+// === Struct Methods ===
+
+// Value receiver → hanya baca data
 func (m Mahasiswa) SapaMahasiswa() {
 	fmt.Printf("Halo, saya %s dari prodi %s dengan IPK %.2f!\n", m.Nama, m.Prodi, m.IPK)
+}
+
+// Pointer receiver → bisa ubah data
+func (m *Mahasiswa) UpdateIPK(ipkBaru float64) {
+	fmt.Printf("Update IPK %s dari %.2f ke %.2f\n", m.Nama, m.IPK, ipkBaru)
+	m.IPK = ipkBaru
+}
+
+func (m *Mahasiswa) SetAktif(status bool) {
+	m.Active = status
+	if status {
+		fmt.Printf("%s sekarang berstatus AKTIF\n", m.Nama)
+	} else {
+		fmt.Printf("%s sekarang berstatus NON-AKTIF\n", m.Nama)
+	}
 }
 
 // === Function tanpa parameter ===
@@ -178,6 +195,11 @@ func main() {
 		Active: true,
 	}
 	fmt.Printf("Data Mahasiswa: %+v\n", m1)
+	m1.SapaMahasiswa()
+
+	// Panggil struct method (pointer receiver)
+	m1.UpdateIPK(3.95)
+	m1.SetAktif(false)
 	m1.SapaMahasiswa()
 
 	// === Defer, Panic, Recover ===
